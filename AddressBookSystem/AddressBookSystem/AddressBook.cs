@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -207,6 +208,24 @@ namespace AddressBookSystem
                         Display();
                         break;
                 }
+            }
+        }
+        public void ReadFile()
+        {
+            Console.WriteLine("The Contact details in the file after reading : \n ");
+            string filePath = @"D:\git project\AddressBookSystem\AddressBookSystem\AddressBookSystem\Files\File.txt";
+            string text = File.ReadAllText(filePath);
+            Console.WriteLine(text);
+        }
+        public void WritingUsingStreamWriter()
+        {
+            Console.WriteLine("\n The Contact details in the file after writing : ");
+            String filePath = @"D:\git project\AddressBookSystem\AddressBookSystem\AddressBookSystem\Files\File.txt";
+            using (StreamWriter writer = File.AppendText(filePath))
+            {
+                writer.WriteLine("\nSNN : 915554865");
+                writer.Close();
+                Console.WriteLine(File.ReadAllText(filePath));
             }
         }
     }
